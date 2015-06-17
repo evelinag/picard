@@ -78,14 +78,14 @@ public class CollectJumpingLibraryMetrics extends CommandLineProgram {
                     "<br /><br />" +
             "This program gets all data for computation from the first read in each pair and assumes that the mapping " +
             "quality (MQ) tag is set with the mate's mapping quality.  If the MQ tag is not set, then the program " +
-            "assumes that the mate's MQ is greater than or equal to MINIMUM_MAPPING_QUALITY (default value is 0).<br /><br /> "+"
+            "assumes that the mate's MQ is greater than or equal to MINIMUM_MAPPING_QUALITY (default value is 0).<br /><br /> "+
             "All of the metric files can be opened with a text editor."  +
                     "<br />" +
                     "<h4>Usage example:</h4>" +
                     "<pre>" +
                     "java -jar picard.jar CollectJumpingLibraryMetrics \\<br />" +
-                    "      I=myBAM.bam  \\<br />" +
-                    "      O=myBAM.jump_metrics.txt" +
+                    "      I=input.bam  \\<br />" +
+                    "      O=jumping_metrics.txt" +
                     "</pre>" +
                     "<hr />" +
                     "" +

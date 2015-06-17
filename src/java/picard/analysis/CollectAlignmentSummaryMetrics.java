@@ -78,24 +78,25 @@ public class CollectAlignmentSummaryMetrics extends SinglePassSamProgram {
             "<br />for detailed explanations of each metric.  Additional information can be found by downloading the following documents from the Illumina website: " +
             "<ul><li>http://support.illumina.com/content/dam/illumina-marketing/documents/products/technotes/hiseq-x-percent-pf-technical-note-770-2014-043.pdf</li> " +
             "<li>http://support.illumina.com/content/dam/illumina-support/documents/documentation/system_documentation/hiseqx/hiseq-x-system-guide-15050091-d.pdf</li></ul>" +
-
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "    java -jar picard.jar CollectAlignmentSummaryMetrics \\<br />" +
             "          R=reference.fasta \\<br />" +
             "          I=input.bam \\<br />" +
             "          O=output.txt" +
-
             "</pre>"+
     "Additional information can be found in the following documents on the Illumina website: " +
             "<ul><li>http://support.illumina.com/content/dam/illumina-marketing/documents/products/technotes/hiseq-x-percent-pf-technical-note-770-2014-043.pdf</li> " +
             "<li>http://support.illumina.com/content/dam/illumina-support/documents/documentation/system_documentation/hiseqx/hiseq-x-system-guide-15050091-d.pdf</li></ul>" +
 
+
             "</pre>" +
 
             "<hr />";
     private static final Log log = Log.getInstance(CollectAlignmentSummaryMetrics.class);
+
 // Usage and parameters
+
     @Option(doc="Paired end reads above this insert size will be considered chimeric along with inter-chromosomal pairs.")
     public int MAX_INSERT_SIZE = 100000;
 
