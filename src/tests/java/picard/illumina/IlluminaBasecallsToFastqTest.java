@@ -28,6 +28,7 @@ import htsjdk.samtools.util.IOUtil;
 import htsjdk.samtools.util.LineReader;
 import htsjdk.samtools.util.StringUtil;
 import htsjdk.samtools.util.TestUtil;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import picard.cmdline.CommandLineProgramTest;
 import picard.illumina.parser.ReadStructure;
@@ -127,6 +128,7 @@ public class IlluminaBasecallsToFastqTest extends CommandLineProgramTest {
      * @param readStructureString
      * @throws Exception
      */
+
     private void runStandardTest(final int lane, final String jobName, final String libraryParamsFile,
                                  final int concatNColumnFields, final String readStructureString, final File baseCallsDir,
                                  final File testDataDir) throws Exception {
@@ -134,6 +136,7 @@ public class IlluminaBasecallsToFastqTest extends CommandLineProgramTest {
         try {
             outputDir.delete();
             outputDir.mkdir();
+
             outputDir.deleteOnExit();
             // Create barcode.params with output files in the temp directory
             final File libraryParams = new File(outputDir, libraryParamsFile);
