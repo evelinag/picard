@@ -143,7 +143,7 @@ public class CollectGcBiasMetrics extends SinglePassSamProgram {
             summaryMetricsFile.addMetric(gcbm.SUMMARY);
         }
         detailMetricsFile.write(OUTPUT);
-        if (SUMMARY_OUTPUT != null) summaryMetricsFile.write(SUMMARY_OUTPUT);
+        summaryMetricsFile.write(SUMMARY_OUTPUT);
 
         final NumberFormat fmt = NumberFormat.getIntegerInstance();
         fmt.setGroupingUsed(true);
