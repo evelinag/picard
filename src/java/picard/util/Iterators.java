@@ -1,6 +1,6 @@
 package picard.util;
 
-
+import com.google.common.base.Optional;
 
 import java.util.Iterator;
 
