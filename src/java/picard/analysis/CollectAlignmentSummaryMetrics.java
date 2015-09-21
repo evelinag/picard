@@ -90,8 +90,6 @@ public class CollectAlignmentSummaryMetrics extends SinglePassSamProgram {
             "<hr />";
     private static final Log log = Log.getInstance(CollectAlignmentSummaryMetrics.class);
 
-// Usage and parameters
-
     @Option(doc="Paired end reads above this insert size will be considered chimeric along with inter-chromosomal pairs.")
     public int MAX_INSERT_SIZE = 100000;
 
