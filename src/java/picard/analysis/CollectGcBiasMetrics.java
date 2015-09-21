@@ -76,7 +76,7 @@ public class CollectGcBiasMetrics extends SinglePassSamProgram {
             "Although the mean of the distribution will vary among organisms, human DNA has a mean GC-content of 40%, suggesting " +
             "preponderance of AT-rich regions.  <br /><br />" +
 
-            "GC bias is calculated and output as both summary (optional) and detailed metrics (required).  The output tables for both the summary and the detailed metrics are /.txt/ files while the chart is a /.pdf/ file. <br /><br /> " +
+            "GC bias is calculated and output as both summary (optional) and detailed metrics (required).  The output tables for both the summary and the detailed metrics are \".txt\" files while the chart is a \".pdf\" file. <br /><br /> " +
             "The GcBiasSummaryMetrics provides high-level metrics that capture run-specific bias information including" +
             " WINDOW_SIZE, ALIGNED_READS, TOTAL_CLUSTERS, AT_DROPOUT, and GC_DROPOUT.  While WINDOW_SIZE refers to the" +
             "numbers of bases used for the distribution (see above), the ALIGNED_READS and" +
