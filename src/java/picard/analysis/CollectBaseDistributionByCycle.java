@@ -32,7 +32,7 @@ public class CollectBaseDistributionByCycle extends SinglePassSamProgram {
                 "to enable assessments of systematic errors at specific positions in the reads.<br /><br />" +
                 "" +
                 "Although the the use of this tool is described for the Illumina sequencing platform, it can be used for" +
-                " any high-throughput sequencing technology including SOLiD/Ion Torrent (Life Technologies), 454 (Roche), " +
+                " any high-throughput sequencing technology including SOLiD and Ion Torrent (Life Technologies), 454 (Roche), " +
                 "Nanopore (Oxford Nanopore Technolgies), and PACBIO RS II (Pacific Biosciences).<br /><br /> " +
 
                 "The Illumina sequencing platform carries out a sequence by synthesis process, whereby each cycle represents " +
