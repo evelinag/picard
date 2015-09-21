@@ -64,7 +64,7 @@ import java.util.Set;
         programGroup = Metrics.class
 )
 public class CollectGcBiasMetrics extends SinglePassSamProgram {
-    static final String USAGE_SUMMARY = "Collects information regarding GC bias, from a SAM/BAM input file.  ";
+    static final String USAGE_SUMMARY = "Collects information regarding GC bias from a SAM/BAM input file.  ";
     static final String USAGE_DETAILS = "Tool that collects information about the proportions of guanine (G) and cytosine (C)" +
             " nucleotides in a sample.  Regions of high and low G + C content have been shown to interfere with mapping/aligning," +
             " ultimately leading to low read depth and fragmented genome assemblies, a phenomenon known as \"GC bias\".  " +
