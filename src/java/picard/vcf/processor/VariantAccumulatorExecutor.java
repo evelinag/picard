@@ -23,7 +23,10 @@
  */
 package picard.vcf.processor;
 
-
+import com.google.common.base.Function;
+import com.google.common.base.Joiner;
+import com.google.common.base.Optional;
+import com.google.common.collect.FluentIterable;
 import picard.util.AtomicIterator;
 import picard.util.Iterators;
 import htsjdk.samtools.util.Log;
