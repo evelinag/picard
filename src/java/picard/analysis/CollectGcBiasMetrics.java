@@ -76,7 +76,7 @@ public class CollectGcBiasMetrics extends SinglePassSamProgram {
             "Although the mean of the distribution will vary among organisms, human DNA has a mean GC-content of 40%, suggesting " +
             "preponderance of AT-rich regions.  <br /><br />" +
 
-            "GC bias is calculated and output as both summary (optional) and detailed metrics (required).  " +
+            "GC bias is calculated and output as both summary (optional) and detailed metrics (required).  The output tables for both the summary and the detailed metrics are /.txt/ files while the chart is a /.pdf/ file. <br /><br /> " +
             "The GcBiasSummaryMetrics provides high-level metrics that capture run-specific bias information including" +
             " WINDOW_SIZE, ALIGNED_READS, TOTAL_CLUSTERS, AT_DROPOUT, and GC_DROPOUT.  While WINDOW_SIZE refers to the" +
             "numbers of bases used for the distribution (see above), the ALIGNED_READS and" +
@@ -90,7 +90,7 @@ public class CollectGcBiasMetrics extends SinglePassSamProgram {
             "by the mean number of reads of all GC bins.  A number of 1 represents mean coverage, a number less than " +
             "one represents lower than mean coverage (e.g. 0.5 means half as much coverage as average) while a " +
             "number greater than one represents higher than mean coverage (e.g. 3.1 means this GC bin has 3.1 times" +
-            " more reads per window than average).  Tool also plots mean base-quality scores of the reads within each GC-content bin, enabling the user to determine how base-quality scores vary with GC-content. "+
+            " more reads per window than average).  Tool also plots mean base-quality scores of the reads within each GC-content bin, enabling the user to determine how base-quality scores vary with GC-content.  <br /> <br />"+
             "The chart ouptut associated with this data table plots the NORMALIZED_COVERAGE, the distribution of WINDOWs corresponding to GC percentages, and base qualities corresponding to each %GC bin."+
             <br />"+
 
