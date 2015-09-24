@@ -43,7 +43,7 @@ public class CollectWgsMetrics extends CommandLineProgram {
             "<pre>"  +
             "java -jar picard.jar CollectWgsMetrics \\<br /> " +
             "      I=input.bam \\<br /> "+
-            "      O=outputmetrics.txt \\<br /> " +
+            "      O=collect_wgs_metrics.txt \\<br /> " +
             "      R=reference_sequence.fasta " +
             "</pre>" +
             "For detailed explanations of the output metrics, please see: " +
