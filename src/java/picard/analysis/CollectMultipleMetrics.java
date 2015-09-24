@@ -36,9 +36,9 @@ public class CollectMultipleMetrics extends CommandLineProgram {
     static final String USAGE_DETAILS ="Takes an input BAM and reference sequence and runs one or more Picard " +
             "metrics modules at the same time to cut down on I/O.  These include CollectAlignmentSummaryMetrics, " +
             "CollectInsertSizeMetrics, QualityScoreDistribution,  MeanQualityByCycle, and " +
-            "CollectBaseDistributionByCycle.  Produces a pdf and a txt file for each tool with the exception of the " +
-            "CollectAlignmentSummaryMetrics tool, which outputs only a txt file.  To view the \"txt\" files, add " +
-            " \".txt\" to the suffix of each output file (but not the \".pdf\" files)." +
+            "CollectBaseDistributionByCycle.  Produces outputs of \".pdf\" and a \".txt\" files for each tool with the exception of the " +
+            "CollectAlignmentSummaryMetrics tool, which outputs only a \".txt\" file.  We provide the base name for the output files (without specifying file extensions). " +
+            "" +
             "<br /><br />" +
             "" +
             "Currently all programs are run with default options and fixed output extensions, " +
@@ -46,10 +46,11 @@ public class CollectMultipleMetrics extends CommandLineProgram {
             "<br />" +
             "<h4>Usage example:</h4>" +
             "<pre>" +
-            "java -jar picard.jar MeanQualityByCycle \\<br />" +
+            "java -jar picard.jar CollectMultipleMetrics \\<br />" +
             "      I=input.bam \\<br />" +
-            "      O=mm_output.txt \\<br />" +
-            "      R=reference_sequence.fasta <br /> " +
+            "      O=mm_output \\<br />" +
+            "      R=reference_sequence.fasta <br />" +
+            "      PROGRAM=[indicate specific tools here] " +
             "</pre>" +
             "<hr />";
     public static interface ProgramInterface {
