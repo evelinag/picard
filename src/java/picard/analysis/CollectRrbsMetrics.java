@@ -100,8 +100,8 @@ public class CollectRrbsMetrics extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar CollectRrbsMetrics \\<br />" +
-            "      I=myBAM.bam \\<br />" +
-            "      M=metrics.rrbsmetrics \\<br />" +
+            "      I=input.bam \\<br />" +
+            "      M=metrics_rrbsmetrics \\<br />" +
             "      R=reference.fasta" +
             "</pre>" +
             "<hr />" +
