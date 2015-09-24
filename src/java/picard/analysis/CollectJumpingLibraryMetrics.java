@@ -60,13 +60,13 @@ import java.util.List;
         programGroup = Metrics.class
 )
 public class CollectJumpingLibraryMetrics extends CommandLineProgram {
-    static final String USAGE_SUMMARY = "SAM file generated with a jumping library.  ";
+    static final String USAGE_SUMMARY = "Produces jumping library metrics from a SAM/BAM file.  ";
     static final String USAGE_DETAILS = "The CollectJumpingLibraryMetrics tool collects high-level metrics about the " +
             "presence of outward- (jumping) and inward-facing (non-jumping) read pairs within a SAM/BAM file.<br /><br />" +
             "  Jumping libraries are created to bypass difficult to align/map regions, such as those containing repetitive" +
             " DNA sequences.  Briefly, the DNA of interest is identified, cut into fragments either with restriction" +
-            " enzymes or by shearing, size-selected, and ligated to adapters for bead-capture and circularized.  " +
-            "After bead-capture, the DNA linearized via restriction enzymes and can be sequenced using adapter" +
+            " enzymes or by shearing.  The size-selected fragments are ligated to adapters for bead-capture and circularized.  " +
+            "After bead-capture, the DNA is linearized via restriction enzymes, and can be sequenced using adapter" +
             " primers facing in outward [reverse/forward (RF)] directions.  " +
             "These library inserts are considered jumping because the ends originate from distal genomic DNA sequences" +
             " and are ligated adjacent to one another during circularization.  Potential artifacts of this method " +
@@ -76,8 +76,8 @@ public class CollectJumpingLibraryMetrics extends CommandLineProgram {
             " times the mode of the insert size for outward-facing pairs. For additional information, please see: " +
             "<br /><br />www.wikipedia.org/wiki/Jumping_library#Paired-end_sequencing " +
                     "<br /><br />" +
-            "This program gets all data for computation from the first read in each pair and assumes that the mapping " +
-            "quality (MQ) tag is set with the mate's mapping quality.  If the MQ tag is not set, then the program " +
+            "This program gets all data for computation from the first read in each pair in which the " +
+            "the mapping quality (MQ) tag is set with the mate's mapping quality.  If the MQ tag is not set, then the program " +
             "assumes that the mate's MQ is greater than or equal to MINIMUM_MAPPING_QUALITY (default value is 0).<br /><br /> "+
             "All of the metric files can be opened with a text editor."  +
                     "<br />" +
