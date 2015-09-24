@@ -33,9 +33,9 @@ public class CollectRawWgsMetrics extends CollectWgsMetrics{
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar CollectRawWgsMetrics \\<br />" +
-            "      I=myBAM.bam \\<br />" +
-            "      O=rawwgsmetrics.txt \\<br />" +
-            "      R=referenceSeq.fasta \\<br />" +
+            "      I=input.bam \\<br />" +
+            "      O=raw_wgs_metrics.txt \\<br />" +
+            "      R=reference_sequence.fasta \\<br />" +
             "      INCLUDE_BQ_HISTOGRAM=true" +
             "</pre>" +
             "<hr />" +
