@@ -48,13 +48,13 @@ public class CollectMultipleMetrics extends CommandLineProgram {
             "<pre>" +
             "java -jar picard.jar CollectMultipleMetrics \\<br />" +
             "      I=input.bam \\<br />" +
-            "      O=mm_output \\<br />" +
+            "      O=multiple_metrics \\<br />" +
             "      R=reference_sequence.fasta <br />" +
             "</pre>" +
             "<h4>Usage example with only the QualityScoreDistribution and MeanQualityByCycle tools specified</h4>" +
             "java -jar picard.jar CollectMultipleMetrics \\<br />" +
             "      I=input.bam \\<br />" +
-            "      O=mm_output \\<br />" +
+            "      O=multiple_metrics \\<br />" +
             "      R=reference_sequence.fasta \\<br />" +
             "      PROGRAM=null \\<br />" +
             "      PROGRAM=QualityScoreDistribution \\<br />" +
