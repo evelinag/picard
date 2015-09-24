@@ -37,7 +37,7 @@ public class CollectMultipleMetrics extends CommandLineProgram {
             "metrics modules at the same time to cut down on I/O.  These include CollectAlignmentSummaryMetrics, " +
             "CollectInsertSizeMetrics, QualityScoreDistribution,  MeanQualityByCycle, and " +
             "CollectBaseDistributionByCycle.  Produces outputs of \".pdf\" and a \".txt\" files for each tool with the exception of the " +
-            "CollectAlignmentSummaryMetrics tool, which outputs only a \".txt\" file.  We provide the base name for the output files (without specifying file extensions). " +
+            "CollectAlignmentSummaryMetrics tool, which outputs only a \".txt\" file.  Provide the base name for the output files (without specifying file extensions). " +
             "" +
             "<br /><br />" +
             "" +
@@ -50,7 +50,15 @@ public class CollectMultipleMetrics extends CommandLineProgram {
             "      I=input.bam \\<br />" +
             "      O=mm_output \\<br />" +
             "      R=reference_sequence.fasta <br />" +
-            "      PROGRAM=[indicate specific tools here] " +
+            "</pre>" +
+            "<h4>Usage example with only the QualityScoreDistribution and MeanQualityByCycle tools specified</h4>" +
+            "java -jar picard.jar CollectMultipleMetrics \\<br />" +
+            "      I=input.bam \\<br />" +
+            "      O=mm_output \\<br />" +
+            "      R=reference_sequence.fasta \\<br />" +
+            "      PROGRAM=null \\<br />" +
+            "      PROGRAM=QualityScoreDistribution \\<br />" +
+            "      PROGRAM=MeanQualityByCycle "+
             "</pre>" +
             "<hr />";
     public static interface ProgramInterface {
