@@ -61,7 +61,7 @@ public class CollectBaseDistributionByCycle extends SinglePassSamProgram {
                 "<br /><h4>Usage example:</h4>" +
                 "<pre>" +
                 "java -jar picard.jar CollectBaseDistributionByCycle \\<br />" +
-                "      CHART=collectbasedistbycycle.pdf \\<br />" +
+                "      CHART=collect_base_dist_by_cycle.pdf \\<br />" +
                 "      I=input.bam \\<br />" +
                 "      O=output.txt" +
                 "</pre>" +
