@@ -54,8 +54,8 @@ import java.io.File;
 )
 public class CollectQualityYieldMetrics extends CommandLineProgram {
     static final String USAGE_SUMMARY = "Collects a set of metrics that indicate the quantity of reads that pass quality thresholds and Illumina-specific filters.  ";
-    static final String USAGE_DETAILS = "This tool helps the user determine the overall quality of reads within a read group bam file" +
-            " where the read group is a subset of a lane of sequence data.  It indicates the total numbers of bases within a read group that have" +
+    static final String USAGE_DETAILS = "This tool enables the user determine the overall quality of reads within a read group bam file, " +
+            "where the read group is a subset of a lane of sequence data.  The output indicates the total numbers of bases within a read group that have" +
             " a minimum base-quality score and pass quality filters (see below).  " +
             "Either the original (OQ) or the recalibrated base quality scores can be used.  The recalibrated base quality scores are" +
             " obtained from the Base Quality Score Recalibration " +
