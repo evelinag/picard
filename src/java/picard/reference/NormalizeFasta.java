@@ -34,8 +34,8 @@ public class NormalizeFasta extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar NormalizeFasta \\<br />" +
-            "      I=FASTA.fasta \\<br />" +
-            "      O=Normalized_FASTA.fasta" +
+            "      I=fasta_1.fasta \\<br />" +
+            "      O=normalized_fasta.fasta" +
             "</pre>" +
             "For additional information on the FASTA format, please see: wikipedia.org/wiki/FASTA_format" +
             "<hr />"
