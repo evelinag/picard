@@ -111,7 +111,7 @@ public class EstimateLibraryComplexity extends AbstractOpticalDuplicateFinderCom
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar EstimateLibraryComplexity \\<br />" +
-            "     I=mybam.bam \\<br />" +
+            "     I=input.bam \\<br />" +
             "     O=est_lib_complex_metrics.txt" +
             "</pre>" +
             "<hr />";
