@@ -46,9 +46,9 @@ public class SortVcf extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar SortVcf \\<br />" +
-            "      I=VCF1.vcf \\<br />" +
-            "      I=VCF2.vcf \\<br />" +
-            "      O=sortedvcfs.vcf" +
+            "      I=vcf_1.vcf \\<br />" +
+            "      I=vcf_2.vcf \\<br />" +
+            "      O=sorted.vcf" +
             "</pre>" +
             "<hr />" ;
     @Option(shortName = StandardOptionDefinitions.INPUT_SHORT_NAME, doc = "Input VCF(s) to be sorted. Multiple inputs must have the same sample names (in order)")
