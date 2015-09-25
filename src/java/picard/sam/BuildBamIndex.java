@@ -64,7 +64,7 @@ public class BuildBamIndex extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar BuildBamIndex \\<br />" +
-            "      I=mybamfile.bam" +
+            "      I=input.bam" +
             "</pre>" +
             "<hr />";
     private static final Log log = Log.getInstance(BuildBamIndex.class);
