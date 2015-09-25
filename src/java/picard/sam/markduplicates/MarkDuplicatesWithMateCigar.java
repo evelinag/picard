@@ -81,9 +81,9 @@ public class MarkDuplicatesWithMateCigar extends AbstractMarkDuplicatesCommandLi
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar MarkDuplicatesWithMateCigar \\<br />" +
-            "      I=myBAM.bam \\<br />" +
-            "      O=dups_wmatecig.bam \\<br />" +
-            "      M=dups_wmatecigmetrics.txt" +
+            "      I=input.bam \\<br />" +
+            "      O=mark_dups_w_mate_cig.txt \\<br />" +
+            "      M=mark_dups_w_mate_cig_metrics.txt" +
             "</pre>" +
             "<hr />";
 
