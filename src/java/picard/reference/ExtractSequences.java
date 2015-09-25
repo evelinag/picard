@@ -68,8 +68,8 @@ public class ExtractSequences extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar ExtractSequences \\<br />" +
-            "      INTERVAL_LIST=myIL.interval_list \\<br />" +
-            "      R=human_b37_20.fasta \\<br />" +
+            "      INTERVAL_LIST=interval_list_1.interval_list \\<br />" +
+            "      R=reference_sequence.fasta \\<br />" +
             "      O=extracted_IL_sequences.fasta" +
             "</pre>" +
             "<hr />";
