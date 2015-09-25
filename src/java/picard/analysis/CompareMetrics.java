@@ -29,8 +29,8 @@ public class CompareMetrics extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar CompareMetrics \\<br />" +
-            "      mymetricfile1.txt \\<br />" +
-            "      mymetricfile2.txt" +
+            "      metricfile1.txt \\<br />" +
+            "      metricfile2.txt" +
             "</pre>" +
             "<hr />";
 
