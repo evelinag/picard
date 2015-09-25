@@ -63,7 +63,7 @@ import java.util.Set;
         programGroup = Metrics.class
 )
 public class CollectRrbsMetrics extends CommandLineProgram {
-    static final String USAGE_SUMMARY = "Collects metrics about reduced representation bisulfite sequencing (RRBS).  ";
+    static final String USAGE_SUMMARY = "Collects metrics about data generated with reduced representation bisulfite sequencing (RRBS).  ";
     static final String USAGE_DETAILS = "This tool calculates and reports QC metrics for RRBS data, based on the " +
             "methylation status of cytosine (C) bases in both CpG and non-CpG sites across all reads of a " +
             "BAM/SAM file.<br /><br />" +
@@ -88,7 +88,7 @@ public class CollectRrbsMetrics extends CommandLineProgram {
             "Since cytosine methylation is not exclusive for CpG \"hotspots\", the CollectRrbsMetrics tool outputs a summary table " +
             "indicating the number of CpG and non-CpG cytosines as well as their conversion C -> T (+ strand) or G -> A (- strand) rates. " +
             "  The tool also outputs the numbers of reads having no CpG sites, " +
-            "and the numbers of reads discarded from the analyses due to inadequate size or excessive numbers of mismatches.<br /><br />" +
+            "and the numbers of reads discarded from the analysis due to inadequate size or excessive numbers of mismatches.<br /><br />" +
 
             "The tool also provides a table containing detailed information on CpG occurrence frequency, CpG conversion frequencies [C -> T (+ strand) or G -> A (- strand)], and the " +
             "specific locations of the CpG sites in the genome.   The conversion frequency helps determines the methylation status of a CpG site.<br /><br />" +
