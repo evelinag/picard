@@ -67,8 +67,8 @@ public class MeanQualityByCycle extends SinglePassSamProgram {
             "<pre>" +
             "java -jar picard.jar MeanQualityByCycle \\<br />" +
             "      I=input.bam \\<br />" +
-            "      O=meanqualbycycle.txt \\<br />" +
-            "      CHART=meanqualbycycle.pdf" +
+            "      O=mean_qual_by_cycle.txt \\<br />" +
+            "      CHART=mean_qual_by_cycle.pdf" +
             "</pre>" +
             "<hr />";
     @Option(shortName="CHART", doc="A file (with .pdf extension) to write the chart to.")
