@@ -33,7 +33,7 @@ import java.util.List;
 )
 public class GatherBamFiles extends CommandLineProgram {
     static final String USAGE_SUMMARY = "Concatenates one or more BAM files together as efficiently as possible";
-    static final String USAGE_DETAILS = "Program to perform a rapid \"gather\" operation on BAM files after a scatter" +
+    static final String USAGE_DETAILS = "Program to perform a rapid \"gather\" operation on BAM files after scatter" +
             " operations where the same process has been performed on different regions of a BAM file creating many " +
             "smaller BAM files that now need to be concatenated (reassembled) back together." +
             "<br /><br />" +
