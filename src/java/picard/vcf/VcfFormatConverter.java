@@ -66,8 +66,8 @@ public class VcfFormatConverter extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar VcfFormatConverter \\<br />" +
-            "      I=myVCF.vcf \\<br />" +
-            "      O=myBCF.bcf \\<br />" +
+            "      I=input.vcf \\<br />" +
+            "      O=output.bcf \\<br />" +
             "      REQUIRE_INDEX=true" +
             "</pre>"+
             "For information about IGV tools, please see: http://www.broadinstitute.org/software/igv/home"+
