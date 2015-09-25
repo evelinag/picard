@@ -45,9 +45,9 @@ public class ScatterIntervalsByNs extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar ScatterIntervalsByNs \\<br />" +
-            "      R=human_b37_20.fasta \\<br />" +
+            "      R=reference_sequence.fasta \\<br />" +
             "      OT=BOTH \\<br />" +
-            "      O=b37.interval_list" +
+            "      O=output.interval_list" +
             "</pre>" +
             "<hr />";
     @Option(shortName = StandardOptionDefinitions.REFERENCE_SHORT_NAME, doc = "Reference sequence to use.")
