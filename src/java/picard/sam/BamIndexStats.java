@@ -58,8 +58,8 @@ public class BamIndexStats extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar BamIndexStats \\<br />" +
-            "      I=Mybamfile.bam \\<br />" +
-            "      #:/BamindexStats.txt" +
+            "      I=input.bam \\<br />" +
+            "      O=output" +
             "</pre>"   +
     "Similar to the \"samtools idxstats\" command.  For additional information, please see: http://samtools.sourceforge.net/. " +
             "<hr />"       ;
