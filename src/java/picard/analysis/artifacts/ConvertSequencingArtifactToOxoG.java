@@ -61,7 +61,7 @@ public class ConvertSequencingArtifactToOxoG extends CommandLineProgram {
             doc = "Basename for output OxoG metrics. Defaults to same basename as input metrics",
             optional = true)
     public File OUTPUT_BASE;
-    public String usageShort = "Extract OxoG metrics format from generalized artifact metrics.";
+    public String usageShort = USAGE_SUMMARY;
 
     // Stock main method
     public static void main(final String[] args) {
