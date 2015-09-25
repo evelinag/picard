@@ -62,7 +62,7 @@ public class ExtractSequences extends CommandLineProgram {
             "Interval_list files are DNA sequence files in which the sequence is grouped by arbitrary but often functional criteria.  " +
             "A common use for interval files is to separate protein coding (exons) from non-coding (introns," +
             " regulatory, etc.) regions.  <br /><br />" +
-            "Subsequent to extraction, FASTA-formated data can be used by a multitude of sequence analysis tools.  For additional information, " +
+            "Subsequent to extraction, FASTA-formatted data can be used by a multitude of sequence analysis tools.  For additional information, " +
             "please see: http://en.wikipedia.org/wiki/FASTA_format/ " +
             "<br />" +
             "<h4>Usage example:</h4>" +
