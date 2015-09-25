@@ -38,16 +38,16 @@ public class ConvertSequencingArtifactToOxoG extends CommandLineProgram {
             " production runs to avoid using both the CollectSequencingArtifactsMetrics and the CollectOxoGMetrics tools.<br /><br />"+
             "" +
             "Output from CollectSequencingArtifactMetrics is the input for this tool.  Only the base of the file name" +
-            " is required for the file name input.  For example, if the file name is Artifactmetrics.txt.bait_bias_detail_metrics" +
-            " or Artifactmetrics.txt.pre_adapter_detail_metrics, only the base of the file name \"Artifactmetrics\" is " +
+            " is required for the file name input.  For example, if the file name is artifact_metrics.txt.bait_bias_detail_metrics" +
+            " or artifact_metrics.txt.pre_adapter_detail_metrics, only the base of the file name \"artifact_metrics\" is " +
             "required on the command line for \"input\".  " +
-            "An output file called \"Artifactmetrics.oxog_metrics\" will be generated automatically.  " +
+            "An output file called \"artifact_metrics.oxog_metrics\" will be generated automatically.  " +
             "A reference sequence is also required.<br />"+
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar ConvertSequencingArtifactToOxoG \\<br />" +
-            "     -I=Artifactmetrics \\<br />" +
-            "     -R=ReferenceSequence.fasta" +
+            "     -I=artifact_metrics \\<br />" +
+            "     -R=reference_sequence.fasta" +
             "</pre>" +
             "For detailed explanations of the output metrics, please see:" +
             "broadinstitute.github.io/picard/picard-metric-definitions.html#CollectOxoGMetrics.CpcgMetrics" +
