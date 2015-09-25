@@ -57,8 +57,8 @@ public class SortSam extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar SortSam \\<br />" +
-            "      I=myBAM.bam \\<br />" +
-            "      O=sortedBam.bam \\<br />" +
+            "      I=input.bam \\<br />" +
+            "      O=sorted.bam \\<br />" +
             "      SORT_ORDER=coordinate" +
             "</pre>" +
             "For information on the \".sam/.bam\" specifications, please see: " +
