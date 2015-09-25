@@ -84,10 +84,10 @@ public class CalculateHsMetrics extends CollectTargetedMetrics<HsMetrics, HsMetr
             "<pre>" +
             "java -jar picard.jar CalculateHsMetrics \\<br />" +
             "      I=input.bam \\<br />" +
-            "      O=HSMetrics.txt \\<br />" +
+            "      O=hs_metrics.txt \\<br />" +
             "      R=reference_sequence.fasta \\<br />" +
-            "      BAIT_INTERVALS=baitintervallist.vcf \\<br />" +
-            "      TARGET_INTERVALS=targetintervallist.vcf" +
+            "      BAIT_INTERVALS=bait.interval_list \\<br />" +
+            "      TARGET_INTERVALS=target.interval_list" +
             "</pre> "   +
 
             "Additional information on output metrics can be found at:<br /><br />" +
