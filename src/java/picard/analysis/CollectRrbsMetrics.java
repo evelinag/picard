@@ -101,8 +101,8 @@ public class CollectRrbsMetrics extends CommandLineProgram {
             "<pre>" +
             "java -jar picard.jar CollectRrbsMetrics \\<br />" +
             "      I=input.bam \\<br />" +
-            "      M=metrics_rrbsmetrics \\<br />" +
-            "      R=reference.fasta" +
+            "      M=rrbs_metrics \\<br />" +
+            "      R=reference_sequence.fasta" +
             "</pre>" +
             "<hr />" +
             "" +
