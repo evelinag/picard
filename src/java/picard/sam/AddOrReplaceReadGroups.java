@@ -36,8 +36,9 @@ import java.util.Arrays;
 )
 public class AddOrReplaceReadGroups extends CommandLineProgram {
     static final String USAGE_SUMMARY = "Replaces read groups in a BAM file.  ";
-    static final String USAGE_DETAILS = "This tool enables the user to merge all the read group in the INPUT files into a single " +
-            "new read group.  The definition of a read group can vary depending on the sequencing platform used.  " +
+    static final String USAGE_DETAILS = "This tool enables the user to replace all read groups in the INPUT file with a single new read " +
+            "group and assign all reads to this read group in the OUTPUT \".bam\" file.<br /><br />" +
+            "The definition of a read group can vary depending on the sequencing platform used.  " +
             "For example, a read group refers to an instrument lane for the Illumina platform and for SOLiD, a read group indicates a slide.  " +
             "Typically, an Illumina sequencer will produce up to eight read groups of data, corresponding to the 8 lanes of the instrument.  " +
             "Merging read groups enables the user to combine data from multiple lanes or runs." +
@@ -46,9 +47,8 @@ public class AddOrReplaceReadGroups extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar AddOrReplaceReadGroups \\<br />" +
-            "      I=input_1.bam \\<br />" +
-            "      I=input_2.bam \\<br />" +
-            "      O=output_1_2.bam \\<br />" +
+            "      I=input.bam \\<br />" +
+            "      O=output.bam \\<br />" +
             "      RGID=4 \\<br />" +
             "      RGLB=lib1 \\<br />" +
             "      RGPL=illumina \\<br />" +
