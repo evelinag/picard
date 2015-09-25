@@ -68,8 +68,8 @@ public class QualityScoreDistribution extends SinglePassSamProgram {
             "<pre>" +
             "java -jar picard.jar QualityScoreDistribution \\<br />" +
             "      I=input.bam \\<br />" +
-            "      O=qualityScoreDistributionOutput.txt \\<br />" +
-            "      CHART=qualityScoreDistribution.pdf" +
+            "      O=qual_score_dist.txt \\<br />" +
+            "      CHART=qual_score_dist.pdf" +
             "</pre>" +
             "*Chastity is defined as the ratio of the brightest base intensity divided by the sum of the " +
             "brightest and second brightest base intensities.  Clusters \"pass filter\" if no more than 1 base call has" +
