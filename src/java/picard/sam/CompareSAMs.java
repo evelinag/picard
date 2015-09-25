@@ -62,8 +62,8 @@ public class CompareSAMs extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar CompareSAMs \\<br />" +
-            "      bam1.bam \\<br />" +
-            "      bam2.bam" +
+            "      file_1.bam \\<br />" +
+            "      file_2.bam" +
             "</pre>" +
             "" +
             "For additional information on the SAM specifications, please see: http://samtools.github.io/hts-specs/SAMv1.pdf" +
