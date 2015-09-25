@@ -79,7 +79,7 @@ public class CollectAlignmentSummaryMetrics extends SinglePassSamProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "    java -jar picard.jar CollectAlignmentSummaryMetrics \\<br />" +
-            "          R=reference.fasta \\<br />" +
+            "          R=reference_sequence.fasta \\<br />" +
             "          I=input.bam \\<br />" +
             "          O=output.txt" +
             "</pre>"+
