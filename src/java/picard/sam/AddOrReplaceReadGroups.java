@@ -46,9 +46,9 @@ public class AddOrReplaceReadGroups extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar AddOrReplaceReadGroups \\<br />" +
-            "      I=bamfile_1.bam \\<br />" +
-            "      I=bamfile_2.bam \\<br />" +
-            "      O=bamfile_1_2.bam \\<br />" +
+            "      I=input_1.bam \\<br />" +
+            "      I=input_2.bam \\<br />" +
+            "      O=output_1_2.bam \\<br />" +
             "      RGID=4 \\<br />" +
             "      RGLB=lib1 \\<br />" +
             "      RGPL=illumina \\<br />" +
