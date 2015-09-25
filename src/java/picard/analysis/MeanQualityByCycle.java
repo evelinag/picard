@@ -59,9 +59,9 @@ import java.util.List;
 public class MeanQualityByCycle extends SinglePassSamProgram {
     static final String USAGE_SUMMARY = "Writes mean quality by cycle for a SAM or BAM file";
     static final String USAGE_DETAILS = "Tool generates a data table and chart of mean quality by cycle from a BAM file." +
-            "  Works best on a single lane/run of data, but can be applied to merged BAMs.  <br /><br />" +
-            "This metric gives an overall snapshot of sequencing machine performance, as base quality scores" +
-            " tend to decrease towards the end of a run. <br /><br />" +
+            "  Works best on a single lane or read group of data, but can be applied to merged BAMs.  <br /><br />" +
+            "This metric gives an overall snapshot of sequencing machine performance.  It is expected that the output will show a slight reduction in overall base quality scores" +
+            " towards the end of a run. <br /><br />" +
             "" +
             "<h4>Usage example:</h4>" +
             "<pre>" +
