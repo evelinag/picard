@@ -75,7 +75,7 @@ public class FastqToSam extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar FastqToSam \\<br />" +
-            "      F1=example.fastq \\<br />" +
+            "      F1=file_1.fastq \\<br />" +
             "      O=fastq_to_bam.bam \\<br />" +
             "      SM=for_tool_testing " +
             "</pre>" +
