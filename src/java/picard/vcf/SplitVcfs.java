@@ -44,9 +44,9 @@ public class SplitVcfs extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar SplitVcfs \\<br />" +
-            "      I=SortedVCFs.vcf \\<br />" +
-            "      SNP_OUTPUT=SNPOUT.vcf \\<br />" +
-            "      INDEL_OUTPUT=INDELOUT.vcf \\<br />" +
+            "      I=input.vcf \\<br />" +
+            "      SNP_OUTPUT=snp.vcf \\<br />" +
+            "      INDEL_OUTPUT=indel.vcf \\<br />" +
             "      STRICT=false" +
             "</pre>" +
             "<hr />" ;
