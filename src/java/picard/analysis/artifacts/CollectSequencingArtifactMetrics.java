@@ -102,9 +102,9 @@ public class CollectSequencingArtifactMetrics extends SinglePassSamProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar CollectSequencingArtifactMetrics \\<br />" +
-            "     -I=Input.bam \\<br />" +
-            "     -O=Artifactmetrics.txt \\<br />" +
-            "     -R=HumanSequence.fasta" +
+            "     -I=input.bam \\<br />" +
+            "     -O=artifact_metrics.txt \\<br />" +
+            "     -R=reference_sequence.fasta" +
             "</pre>" +
             "" +
             "For additional information, please see" +
