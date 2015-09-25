@@ -79,8 +79,8 @@ public class RevertSam extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar RevertSam \\<br />" +
-            "     I=myBAM.bam \\<br />" +
-            "     O=revertedbam.bam" +
+            "     I=input.bam \\<br />" +
+            "     O=reverted.bam" +
             "</pre>" +
             "For information on the \".sam/.bam\" header specification, please see: " +
             "http://samtools.github.io/hts-specs/SAMv1.pdf " +
