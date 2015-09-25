@@ -78,8 +78,8 @@ public class FixMateInformation extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar FixMateInformation \\<br /> " +
-            "      I=myBAM.bam \\ <br /> " +
-            "      O=fixed_BAM.bam" +
+            "      I=input.bam \\ <br /> " +
+            "      O=fixed_mate.bam" +
             "</pre> " +
             "For information on the SAM format, please see: http://samtools.sourceforge.net" +
             "<hr />";
