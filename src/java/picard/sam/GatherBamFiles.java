@@ -44,8 +44,8 @@ public class GatherBamFiles extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar GatherBamFiles \\<br /> " +
-            "     I=myBAM.bam \\ <br /> " +
-            "     O=gathered_BAMs.bam" +
+            "     I=input.bam \\ <br /> " +
+            "     O=gathered_files.bam" +
             "</pre> " +
             "For information on the SAM format, please see: http://samtools.sourceforge.net" +
             "<hr />";
