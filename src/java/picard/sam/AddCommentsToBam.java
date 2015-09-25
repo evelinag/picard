@@ -28,8 +28,7 @@ import java.util.List;
 public class AddCommentsToBam extends CommandLineProgram {
     static final String USAGE_SUMMARY = "Adds comments to the header of a BAM file.  ";
     static final String USAGE_DETAILS = "Adds one or more comments to the header of a specified BAM file and copies it to the" +
-            " specified output file.  Note that added comments cannot have spaces between words.  However, multiple comments can be added" +
-            " via multiple comment arguments (see below).  A block copying method is used to ensure " +
+            " specified output file.  A block copying method is used to ensure " +
             "efficient transfer to the output file. SAM files are not supported.<br />"          +
             "<h4>Usage example:</h4>" +
             "<pre>" +
