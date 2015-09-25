@@ -60,9 +60,9 @@ public class ReplaceSamHeader extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar ReplaceSamHeader \\<br />" +
-            "      I=bamfile1.bam \\<br />" +
-            "      HEADER=bamfile2header.bam \\<br />" +
-            "      O=new_header_on_bam.bam" +
+            "      I=input_1.bam \\<br />" +
+            "      HEADER=input_2.bam \\<br />" +
+            "      O=bam_with_new_head.bam" +
             "</pre>" +
             "For information on the \".sam/.bam\" header specification, please see: " +
             "http://samtools.github.io/hts-specs/SAMv1.pdf" +
