@@ -57,11 +57,11 @@ public class LiftoverVcf extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar LiftoverVcf \\<br />" +
-            "     I=origin_VCF.vcf \\<br />" +
-            "     O=liftover_VCF.vcf \\<br />" +
+            "     I=input.vcf \\<br />" +
+            "     O=lifted_over.vcf \\<br />" +
             "     CHAIN=b37tohg19.chain \\<br />" +
             "     REJECT=rejected_variants.vcf \\<br />" +
-            "     REFERENCE_SEQUENCE=target_reference_seq.fasta" +
+            "     R=reference_sequence.fasta" +
             "</pre>" +
             "For additional information, please see: http://genome.ucsc.edu/cgi-bin/hgLiftOver" +
             "<hr />";
