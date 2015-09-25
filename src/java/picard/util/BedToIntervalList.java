@@ -66,9 +66,9 @@ public class BedToIntervalList extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar BedToIntervalList \\<br />" +
-            "      I=BEDfile.bed \\<br />" +
-            "      O=intervalList.interval_list \\<br />" +
-            "      SD=referenceSeq.dict" +
+            "      I=input.bed \\<br />" +
+            "      O=list.interval_list \\<br />" +
+            "      SD=reference_sequence.dict" +
             "</pre>" +
             "Output files can be viewed without modification using a text editor. " +
             "<br /><br />For additional information regarding BED files and the annotation field options, please see:" +
