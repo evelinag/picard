@@ -54,7 +54,7 @@ import java.util.List;
 )
 public class QualityScoreDistribution extends SinglePassSamProgram {
     static final String USAGE_SUMMARY = "Program to chart quality score distributions in a SAM or BAM file.  ";
-    static final String USAGE_DETAILS = "This tool is used for determining the overall \"quality\" of a given run. "+
+    static final String USAGE_DETAILS = "This tool is used for determining the overall \"quality\" for a library in a given run. "+
             "Provides both chart and table outputs, indicating the range of quality scores and the total" +
             " numbers of bases corresponding to those scores." +
             "  Options include plotting " +
