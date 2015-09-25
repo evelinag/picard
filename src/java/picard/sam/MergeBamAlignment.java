@@ -62,8 +62,8 @@ public class MergeBamAlignment extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar MergeBamAlignment \\<br /> " +
-            "      UNMAPPED=umBAM.bam \\ <br /> " +
-            "      O=merge_BAM_alignment.bam \\<br /> " +
+            "      UNMAPPED=input.bam \\ <br /> " +
+            "      O=merge_alignments.bam \\<br /> " +
             "      R=reference_sequence.fasta" +
             "</pre> " +
 
