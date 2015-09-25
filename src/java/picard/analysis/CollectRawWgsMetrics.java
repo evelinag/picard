@@ -18,18 +18,21 @@ import picard.cmdline.programgroups.Metrics;
 )
 public class CollectRawWgsMetrics extends CollectWgsMetrics{
     static final String USAGE_SUMMARY = "Writes whole genome sequencing-related metrics for a SAM or BAM file.  ";
-    static final String USAGE_DETAILS = "Useful metrics for evaluating coverage and performance of whole " +
-            "genome sequencing experiments.  Although similar to the CollectWgsMetrics tool," +
-            " the default thresholds for CollectRawWgsMetrics are less stringent.  For example, the CollectRawWgsMetrics" +
-            " has lower base and mapping quality score thresholds as well a higher coverage cap than the CollectWgsMetrics" +
-            " tool.<br /><br />" +
-            "Histogram output is optional and for a given run, displays two separate outputs on the y-axis while using a single set" +
+    static final String USAGE_DETAILS = "This tool computes a number of metrics that are useful for evaluating coverage and performance " +
+            "of whole genome sequencing experiments.  These metrics include the percentages of reads that pass" +
+            " minimal base- and mapping- quality filters as well as coverage (read-depth) levels. <br /><br />  " +
+
+            "The histogram output is optional and for a given run, displays two separate outputs on the y-axis while using a single set" +
             " of values for the x-axis.  Specifically, the first column in the histogram table (x-axis) is labeled \"coverage\" and represents" +
             " different possible coverage depths.  However, it also represents the range of values for the base quality scores and thus should probably be" +
             " labeled \"sequence depth and base quality scores\".  " +
             "The second and third columns (y-axes) correspond to the numbers of bases at a specific sequence depth" +
-            " \"count\" and the numbers of bases at a particular base quality score \"baseq_count\" respectively." +
-            "<br />" +
+            " \"count\" and the numbers of bases at a particular base quality score \"baseq_count\" respectively.<br /><br />" +
+            "" +
+            "Although similar to the CollectWgsMetrics tool, the default thresholds for CollectRawWgsMetrics are less stringent.  For example, the CollectRawWgsMetrics" +
+            " have base and mapping quality score thresholds set to \"3\" and \"0\" respectively, while the CollectWgsMetrics tool has the" +
+            " default threshold values set to \"20\".  Nevertheless, both tools enable the user to input specific threshold values." +
+            "" +
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar CollectRawWgsMetrics \\<br />" +
