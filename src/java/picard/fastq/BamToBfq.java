@@ -50,9 +50,9 @@ public class BamToBfq extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar BamToBfq \\<br />" +
-            "      MyBAMfile.bam \\<br />" +
-            "      ANALYSIS_DIR=DIR \\<br />" +
-            "      FLOWCELL_BARCODE=unit1 \\<br />" +
+            "      I=input.bam \\<br />" +
+            "      ANALYSIS_DIR=analysis_dir \\<br />" +
+            "      OUTPUT_FILE_PREFIX=output_file_1 \\<br />" +
             "      PAIRED_RUN=false" +
             "</pre>" +
             "<hr />"
