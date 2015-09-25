@@ -25,8 +25,7 @@ public class CollectTargetedPcrMetrics extends CollectTargetedMetrics<TargetedPc
     static final String USAGE_SUMMARY = "Produces targeted PCR-related metrics for a given SAM/BAM file.  ";
     static final String USAGE_DETAILS = "This tool calculates a set of metrics to TSCA sequencing from an aligned SAM or" +
             "BAM file.  TruSeq Custom Amplicon (TSCA) is an Illumina kit that allows researchers to sequence targeted " +
-            "regions of interest in a genome.  Although there are many applications for using this targeted " +
-            "approach, it is frequently used for genomic regions of high or low GC content.  For additional information, please see:" +
+            "regions of interest in a genome.  This metric is appropriate for multiple small-target technologies including exome sequencing.  For additional information, please see:" +
             "<br /><br />" +
             "www.illumina.com/content/dam/illumina-marketing/documents/products/datasheets/datasheet_truseq_custom_amplicon.pdf." +
             "<br /><br />" +
