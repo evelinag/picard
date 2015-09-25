@@ -37,7 +37,7 @@ public class DownsampleSam extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar DownsampleSam \\<br />" +
-            "      I=mybamfile.bam \\<br />" +
+            "      I=input.bam \\<br />" +
             "      O=downsampled.bam" +
             "</pre>" +
             "<hr />";
