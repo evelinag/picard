@@ -75,8 +75,8 @@ public class SamToFastq extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar SamToFASTQ \\<br />" +
-            "     I=myBAM.bam \\<br />" +
-            "     FASTQ=myBAM.fastq" +
+            "     I=input.bam \\<br />" +
+            "     FASTQ=output.fastq" +
             "</pre>" +
             "For information on the FASTQ format, please see: http://maq.sourceforge.net/fastq.shtml"+
             "<hr />";
