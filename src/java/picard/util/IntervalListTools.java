@@ -57,9 +57,9 @@ public class IntervalListTools extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar IntervalListTools \\<br />" +
-            "      I=il1.interval_list \\<br />" +
-            "      SI=il2.interval_list \\<br />" +
-            "      O=newil.interval_list" +
+            "      I=input.interval_list \\<br />" +
+            "      SI=input_2.interval_list \\<br />" +
+            "      O=new.interval_list" +
             "</pre>" +
             "* For additional information on the Sam header, please download: samtools.github.io/hts-specs/SAMv1.pdf" +
             "<br /><br />" +
