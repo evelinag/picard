@@ -53,10 +53,10 @@ import java.util.List;
 )
 public class MergeBamAlignment extends CommandLineProgram {
     static final String USAGE_SUMMARY = "Merges alignment data from a SAM or BAM with data in an unmapped BAM file.  ";
-    static final String USAGE_DETAILS = "Produces a third SAM or BAM file with additional data stored in an" +
-            " unmapped BAM file in addition to the aligned and unaligned reads.  The purpose of this tool" +
-            " is to use information from the unmapped BAM to fix up aligner output.  The resulting file will be valid " +
-            "for use by other Picard tools.  For simple BAM file merges, use MergeSamFiles.  NOTE that MergeBamAlignment expects to " +
+    static final String USAGE_DETAILS = "Produces a new SAM or BAM file that includes all aligned and unaligned reads and also carries " +
+            "forward additional read attributes from the unmapped BAM (attributes that may have been removed in the process of alignment)." +
+            "  The purpose of this tool is to use information from the unmapped BAM to fix up aligner output.  The resulting file will be valid " +
+            "for use by other Picard tools.  For simple \".bam\" file merges, use MergeSamFiles.  NOTE that MergeBamAlignment expects to " +
             "find a sequence dictionary in the same directory as REFERENCE_SEQUENCE and expects it " +
             "to have the same base name as the reference fasta except with the extension \".dict\". "         +
             "<h4>Usage example:</h4>" +
