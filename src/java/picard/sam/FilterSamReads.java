@@ -69,9 +69,9 @@ public class FilterSamReads extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar FilterSamReads \\<br /> " +
-            "      I=myBAM.bam \\ <br /> " +
-            "      O=filtered_reads.bam \\<br /> " +
-            "      FILTER=includeAligned" +
+            "      I=input.bam \\ <br /> " +
+            "      O=output.bam \\<br /> " +
+            "      FILTER=filtered_reads" +
             "</pre> " +
             "For information on the SAM format, please see: http://samtools.sourceforge.net" +
             "<hr />";
