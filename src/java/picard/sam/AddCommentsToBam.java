@@ -34,10 +34,10 @@ public class AddCommentsToBam extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar AddCommentsToBam \\<br />" +
-            "      I=InputBAM.bam \\<br />" +
-            "      O=ModifiedBam.bam \\<br />" +
-            "      C=\"My_comment\" \\<br />" +
-            "      C=\"My_additional_comment\"" +
+            "      I=input.bam \\<br />" +
+            "      O=modified_bam.bam \\<br />" +
+            "      C=comment_1 \\<br />" +
+            "      C=comment_2" +
             "</pre>" +
             "" +
             "<hr />";
