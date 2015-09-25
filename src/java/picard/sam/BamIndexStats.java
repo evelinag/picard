@@ -52,8 +52,8 @@ import java.io.File;
 public class BamIndexStats extends CommandLineProgram {
     static final String USAGE_SUMMARY = "Generates index statistics from a BAM file";
     static final String USAGE_DETAILS = "This tool enables the user to obtain statistics from a BAM index (.bai) file.  " +
-            "Statistics include count of aligned and unaligned reads as well as a count of all records with no start" +
-            " coordinate. Input BAM file must have a corresponding index file.<br />" +
+            "Statistics include counts of aligned and unaligned reads as well as all records with no start" +
+            " coordinate.  Input BAM file must have a corresponding index file.<br />" +
             "" +
             "<h4>Usage example:</h4>" +
             "<pre>" +
