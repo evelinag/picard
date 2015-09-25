@@ -69,9 +69,9 @@ public class MergeSamFiles extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar MergeSamFiles \\<br />" +
-            "      I=myBAM1.bam \\<br />" +
-            "      I=myBAM2.bam \\<br />" +
-            "      O=my_mergedBAM.bam" +
+            "      I=input_1.bam \\<br />" +
+            "      I=input_2.bam \\<br />" +
+            "      O=merged_files.bam" +
             "</pre>" +
             "For additional information on \".sam\" and \".bam\" files, please see: http://samtools.github.io/hts-specs/SAMv1.pdf" +
             "<hr />"
