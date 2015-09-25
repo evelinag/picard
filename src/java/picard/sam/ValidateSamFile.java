@@ -66,7 +66,7 @@ public class ValidateSamFile extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar ValidateSamFile \\<br />" +
-            "     I=myBam.bam" +
+            "     I=input.bam" +
             "</pre>" +
             "For additional information on \".sam/.bam\" files, please see: " +
             "http://samtools.github.io/hts-specs/SAMv1.pdf" +
