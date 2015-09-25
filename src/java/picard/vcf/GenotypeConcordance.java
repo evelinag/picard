@@ -83,10 +83,10 @@ public class GenotypeConcordance extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar GenotypeConcordance \\<br />" +
-            "      CALL_VCF=VCF1.vcf \\<br />" +
-            "      O=GConcordance.vcf \\<br />" +
-            "      TRUTH_VCF=Truthset.vcf \\<br />" +
-            "      TRUTH_SAMPLE=Truthsample#" +
+            "      CALL_VCF=input.vcf \\<br />" +
+            "      O=gc_concordance.vcf \\<br />" +
+            "      TRUTH_VCF=truth_set.vcf \\<br />" +
+            "      TRUTH_SAMPLE=truth_sample#" +
             "</pre>" +
             "" +
             "<h4>Output Metrics:</h4>" +
