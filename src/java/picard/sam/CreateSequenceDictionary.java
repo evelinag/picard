@@ -68,8 +68,8 @@ public class CreateSequenceDictionary extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar CreateSequenceDictionary \\ <br />" +
-            "      R=referenceSequence.fasta \\ <br />" +
-            "      O=refSeq.dict" +
+            "      R=reference_sequence.fasta \\ <br />" +
+            "      O=reference_sequence.dict" +
             "" +
             "</pre>" +
             "<hr />";
