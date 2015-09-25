@@ -79,9 +79,9 @@ public class MarkDuplicates extends AbstractMarkDuplicatesCommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar MarkDuplicates \\<br />" +
-            "      I=myBAM.bam \\<br />" +
-            "      O=markedduplicates.txt \\<br />" +
-            "      M=markeddupmetrics.bam " +
+            "      I=input.bam \\<br />" +
+            "      O=marked_duplicates.txt \\<br />" +
+            "      M=marked_dup_metrics.bam " +
             "</pre>" +
             "<hr />";
     private final Log log = Log.getInstance(MarkDuplicates.class);
