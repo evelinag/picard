@@ -27,7 +27,7 @@ public class CalculateReadGroupChecksum extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar CalculateReadGroupChecksum \\<br />" +
-            "      I=myBAM.bam" +
+            "      I=input.bam" +
             "</pre>"  +
             "Please see the AddOrReplaceReadGroups tool documentation for information regarding the addition, subtraction, or merging of read groups."     +
             "<hr />";
