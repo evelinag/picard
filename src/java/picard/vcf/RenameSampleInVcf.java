@@ -56,9 +56,9 @@ public class RenameSampleInVcf extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar RenameSampleInVcf \\<br />" +
-            "      I=VCF1.vcf \\<br />" +
-            "      O=VCFsamplerenamed.vcf \\<br />" +
-            "      NEW_SAMPLE_NAME=Sample123" +
+            "      I=input.vcf \\<br />" +
+            "      O=renamed.vcf \\<br />" +
+            "      NEW_SAMPLE_NAME=sample123" +
             "</pre>" +
             "<hr />";
     @Option(shortName=StandardOptionDefinitions.INPUT_SHORT_NAME, doc="Input single sample VCF.")
