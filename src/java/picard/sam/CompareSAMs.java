@@ -58,7 +58,9 @@ public class CompareSAMs extends CommandLineProgram {
     static final String USAGE_SUMMARY = "Compares two input \".sam\" or \".bam\" files.  ";
     static final String USAGE_DETAILS = "This program initially compares the headers of \".sam\" or \".bam\" files. " +
             " If the file headers are comparable, the program will examine and compare the read pairs within the SAMRecords.  " +
-            "<br /><br />The tool summarizes information on the numbers of read pairs that match, mismatch, are missing, etc. " +
+            "<br /><br />The tool summarizes information on the numbers of read pairs that match or mismatch. " +
+            "In addition, the tool specifies the numbers of reads that are missing or unmapped and specifies the numbers of reads that are missing or unmapped by direction" +
+            "(forward or reverse)." +
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar CompareSAMs \\<br />" +
