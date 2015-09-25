@@ -57,10 +57,10 @@ public class LiftOverIntervalList extends CommandLineProgram {
             "<h4>Usage example:</h4>" +
             "<pre>" +
             "java -jar picard.jar LiftOverIntervalList \\<br />" +
-            "      I=intervallist.vcf \\<br />" +
-            "      O=liftedintervallist.txt \\<br />" +
-            "      SD=ucsc.hg19.dict \\<br />" +
-            "      CHAIN=b37tohg19.chain" +
+            "      I=input.interval_list \\<br />" +
+            "      O=output.interval_list \\<br />" +
+            "      SD=reference_sequence.dict \\<br />" +
+            "      CHAIN=build.chain" +
             "</pre>" +
             "For additional information, please see: http://genome.ucsc.edu/cgi-bin/hgLiftOver" +
             "<hr />";
