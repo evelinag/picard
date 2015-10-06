@@ -1,5 +1,32 @@
+/*
+ * The MIT License
+ *
+ * Copyright (c) 2015 The Broad Institute
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
 package picard.analysis;
 
+import picard.util.MathUtil;
+
+import java.util.Arrays;
 import java.util.*;
 
 /**
@@ -13,38 +40,38 @@ public class TheoreticalSensitivity {
     @param logOddsThreshold is the log_10 of the likelihood ratio required to call a SNP,
     for example 5 if the variant likelihood must be 10^5 times greater
      */
-    public static double hetSNPSensitivity(final List<Double> depthDistribution, final List<Double> qualityDistribution,
+    public static double hetSNPSensitivity(final long[] depthDistribution, final long[] qualityDistribution,
                                   final int sampleSize, final double logOddsThreshold) {
-        int N = depthDistribution.size();
-        RouletteWheel qualitySampler = new RouletteWheel(qualityDistribution);
+        final int N = depthDistribution.length;
+        final RouletteWheel qualitySampler = new RouletteWheel(qualityDistribution);
 
         //qualitySums[m] is a random sample of sums of m quality scores, for m = 0, 1, N - 1
-        List<ArrayList<Integer>> qualitySums = qualitySampler.sampleCumulativeSums(N, sampleSize);
+        final List<ArrayList<Integer>> qualitySums = qualitySampler.sampleCumulativeSums(N, sampleSize);
 
         //if a quality sum of m qualities exceeds the quality sum threshold for n total reads, a SNP is called
-        ArrayList<Double> qualitySumThresholds = new ArrayList<Double>(N);
+        final ArrayList<Double> qualitySumThresholds = new ArrayList<Double>(N);
         for (int n = 0; n < N; n++) qualitySumThresholds.add(10*(n*Math.log10(2) + logOddsThreshold));
 
 
         //probabilityToExceedThreshold[m][n] is the probability that the sum of m quality score
         //exceeds the nth quality sum threshold
-        List<ArrayList<Double>> probabilityToExceedThreshold = proportionsAboveThresholds(qualitySums, qualitySumThresholds);
-        List<ArrayList<Double>> altDepthDistribution = hetAltDepthDistribution(N);
+        final List<ArrayList<Double>> probabilityToExceedThreshold = proportionsAboveThresholds(qualitySums, qualitySumThresholds);
+        final List<ArrayList<Double>> altDepthDistribution = hetAltDepthDistribution(N);
         double result = 0.0;
         for (int n = 0; n < N; n++) {
             for (int m = 0; m <= n; m++) {
-                result += depthDistribution.get(n) * altDepthDistribution.get(n).get(m)* probabilityToExceedThreshold.get(m).get(n);
+                result += depthDistribution[n] * altDepthDistribution.get(n).get(m)* probabilityToExceedThreshold.get(m).get(n);
             }
         }
         return result;
     }
 
     //given L lists of lists and N thresholds, count the proportion of each list above each threshold
-    public static List<ArrayList<Double>> proportionsAboveThresholds(final List<ArrayList<Integer>> lists, List<Double> thresholds) {
-        ArrayList<ArrayList<Double>> result = new ArrayList<ArrayList<Double>>();
+    public static List<ArrayList<Double>> proportionsAboveThresholds(final List<ArrayList<Integer>> lists, final List<Double> thresholds) {
+        final ArrayList<ArrayList<Double>> result = new ArrayList<ArrayList<Double>>();
 
-        for (ArrayList<Integer> list : lists) {
-            ArrayList<Double> newRow = new ArrayList<Double>(Collections.nCopies(thresholds.size(),0.0));
+        for (final ArrayList<Integer> list : lists) {
+            final ArrayList<Double> newRow = new ArrayList<Double>(Collections.nCopies(thresholds.size(),0.0));
             Collections.sort(list);
             int n = 0;
             int j = 0;  //index within the ordered sample
@@ -62,9 +89,9 @@ public class TheoreticalSensitivity {
     //Utility function for making table of binomial distribution probabilities nCm * (0.5)^n
     //for n = 0, 1 . . . N - 1 and m = 0, 1. . . n
     public static List<ArrayList<Double>> hetAltDepthDistribution(final int N) {
-        List<ArrayList<Double>> table = new ArrayList<ArrayList<Double>>();
+        final List<ArrayList<Double>> table = new ArrayList<ArrayList<Double>>();
         for (int n = 0; n < N; n++) {
-            ArrayList<Double> nthRow = new ArrayList<Double>();
+            final ArrayList<Double> nthRow = new ArrayList<Double>();
 
             //add the 0th element, then elements 1 through n - 1, then the nth.
             //Note that nCm = (n-1)C(m-1) * (n/m)
@@ -87,29 +114,31 @@ public class TheoreticalSensitivity {
     which works well when the ratio of maximum weight to average weight is not large.
      */
     public static class RouletteWheel {
-        private List<Double> probabilities;
-        private int N;
+        final private List<Double> probabilities;
+        final private int N;
 
-        RouletteWheel(final List<Double> weights) {
-            N = weights.size();
+        RouletteWheel(final long[] weights) {
+            N = weights.length;
 
             probabilities = new ArrayList<Double>();
-            double wMax = Collections.max(weights);
-            for (final double w : weights) {
+            //@TODO: check for 0
+            final double wMax = (double)MathUtil.max(weights);
+            for (final long w : weights) {
                 probabilities.add(w/wMax);
             }
         }
 
+        //@TODO: test that this cannot infinitely loop; get counter and cancel it if it goes past that
         public int draw() {
             while (true) {
-                int n = (int) (N * Math.random());
+                final int n = (int) (N * Math.random());
                 if (Math.random() < probabilities.get(n)) return n;
             }
         }
 
         //get samples of sums of 0, 1, 2,. . .  N - 1 draws
         public List<ArrayList<Integer>> sampleCumulativeSums(final int maxNumberOfSummands, final int sampleSize) {
-            List<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+            final List<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
             for (int m = 0; m < maxNumberOfSummands; m++) result.add(new ArrayList<Integer>());
 
             for (int iteration = 0; iteration < sampleSize; iteration++) {

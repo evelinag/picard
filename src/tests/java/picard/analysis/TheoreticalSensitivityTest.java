@@ -1,3 +1,27 @@
+/*
+ * The MIT License
+ *
+ * Copyright (c) 2015 The Broad Institute
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
 package picard.analysis;
 
 import org.testng.Assert;
@@ -20,36 +44,37 @@ public class TheoreticalSensitivityTest {
     public void testRouletteWheel() throws Exception {
 
         //test that a deterministic roulette wheel only gives one value
-        List<Double> deterministicWeights = Arrays.asList(0.0, 1.0, 0.0);
+        final long[] deterministicWeights = {0L, 1L, 0L};
         final TheoreticalSensitivity.RouletteWheel deterministicWheel = new TheoreticalSensitivity.RouletteWheel(deterministicWeights);
         for (int n = 0; n < 10; n++) Assert.assertEquals(deterministicWheel.draw(), 1);
 
         //test the sums of this deterministic wheel: a sum of n 1's equals n
-        List<ArrayList<Integer>> deterministicSums = deterministicWheel.sampleCumulativeSums(10, 1);
+        final List<ArrayList<Integer>> deterministicSums = deterministicWheel.sampleCumulativeSums(10, 1);
         for (int n = 0; n < 10; n++) Assert.assertEquals(deterministicSums.get(n).get(0), (Integer) n);
 
         //test that an unfair coin w/ probability 1/4 of heads gives roughly 1/4 heads
-        double p = 0.25;
+        /*final double p = 0.25;
         int total_heads = 0;
-        int N = 10000;
-        double stdDev = Math.sqrt(N*p*(1-p));   //the stddev of the sample total heads
-        List<Double> unfairCoinWeights = Arrays.asList(1-p, p);
+        final int N = 10000;
+        final double stdDev = Math.sqrt(N*p*(1-p));   //the stddev of the sample total heads
+        final List<Double> unfairCoinWeights = Arrays.asList(1-p, p);
         final TheoreticalSensitivity.RouletteWheel coinFlipWheel = new TheoreticalSensitivity.RouletteWheel(unfairCoinWeights);
         for (int n = 0; n < N; n++) total_heads += coinFlipWheel.draw();
         Assert.assertEquals(total_heads, N*p, 10*stdDev);
+        */
     }
 
     @Test
     public void testProportionsAboveThresholds() throws Exception {
-        List<ArrayList<Integer>> sums = new ArrayList<ArrayList<Integer>>();
+        final List<ArrayList<Integer>> sums = new ArrayList<ArrayList<Integer>>();
         sums.add(new ArrayList<Integer>(Arrays.asList(0,0,0)));
         sums.add(new ArrayList<Integer>(Arrays.asList(10, 10)));
         sums.add(new ArrayList<Integer>(Arrays.asList(5, 11, -2, 4)));
-        List<Double> thresholds = Arrays.asList(-1.0, 1.0, 6.0);
+        final List<Double> thresholds = Arrays.asList(-1.0, 1.0, 6.0);
         Assert.assertEquals(sums.size(), 3);
         Assert.assertEquals(thresholds.size(), 3);
 
-        List<ArrayList<Double>> proportions = TheoreticalSensitivity.proportionsAboveThresholds(sums, thresholds);
+        final List<ArrayList<Double>> proportions = TheoreticalSensitivity.proportionsAboveThresholds(sums, thresholds);
         Assert.assertEquals(proportions.size(), 3);
 
         Assert.assertEquals(proportions.get(0).get(0), (double) 3/3);
@@ -65,9 +90,9 @@ public class TheoreticalSensitivityTest {
 
     @Test
     public void testHetAltDepthDistribution() throws Exception {
-        int N = 6;
-        double p = 0.5;
-        List<ArrayList<Double>> distribution = TheoreticalSensitivity.hetAltDepthDistribution(N);
+        final int N = 6;
+        final double p = 0.5;
+        final List<ArrayList<Double>> distribution = TheoreticalSensitivity.hetAltDepthDistribution(N);
 
         for (int n = 0; n < N-1; n++) {
             for (int m = 0; m <= n; m++) {
@@ -87,36 +112,36 @@ public class TheoreticalSensitivityTest {
     @Test
     public void testCentralLimitTheorem() throws Exception {
         //use a RouletteWheel that gives 0, 1, 2 with equal probability
-        List<Double> weights = Arrays.asList(1.0, 1.0, 1.0);
+        final long[] weights = {1L, 1L, 1L};
         final TheoreticalSensitivity.RouletteWheel wheel = new TheoreticalSensitivity.RouletteWheel(weights);
 
-        int sampleSize = 1000;
-        int numSummands = 100;
+        final int sampleSize = 1000;
+        final int numSummands = 100;
 
         //the mean and standard deviation of a single roulette draw and of many draws
-        double muSingleDraw = 1.0;
-        double sigmaSingleDraw = Math.sqrt(2.0 / 3.0);
-        double mu = numSummands * muSingleDraw;
-        double sigma = Math.sqrt(numSummands) * sigmaSingleDraw;
+        final double muSingleDraw = 1.0;
+        final double sigmaSingleDraw = Math.sqrt(2.0 / 3.0);
+        final double mu = numSummands * muSingleDraw;
+        final double sigma = Math.sqrt(numSummands) * sigmaSingleDraw;
 
         //test the sums of this deterministic wheel: a sum of n 1's equals n
-        List<ArrayList<Integer>> sums = wheel.sampleCumulativeSums(numSummands, sampleSize);
+        final List<ArrayList<Integer>> sums = wheel.sampleCumulativeSums(numSummands, sampleSize);
         //we only want the last set of sums, those with numSummands summands
         sums.subList(0, sums.size() - 1).clear();
 
         Assert.assertEquals(sums.size(), 1);
 
         //test whether the number of elements within one standard deviation agrees with the normal distribution
-        List<Double> thresholds = Arrays.asList(mu - sigma, mu + sigma);
+        final List<Double> thresholds = Arrays.asList(mu - sigma, mu + sigma);
 
         //sums is 1 x sampleSize, thresholds is a 2-vector, so proportions is 1 x 2
-        List<ArrayList<Double>> proportions = TheoreticalSensitivity.proportionsAboveThresholds(sums, thresholds);
-        double empiricalProportionWithinOneSigma = proportions.get(0).get(0) - proportions.get(0).get(1);
+        final List<ArrayList<Double>> proportions = TheoreticalSensitivity.proportionsAboveThresholds(sums, thresholds);
+        final double empiricalProportionWithinOneSigma = proportions.get(0).get(0) - proportions.get(0).get(1);
 
         //the proportion within one sigma for the normal distribution
         //hence whether any element falls within one sigma is a Bernoulli variable
-        double theoreticalProportionWithinOneSigma = 0.682689492;
-        double samplingStandardDeviationOfProportion = Math.sqrt(theoreticalProportionWithinOneSigma*(1-theoreticalProportionWithinOneSigma) /  sampleSize);
+        final double theoreticalProportionWithinOneSigma = 0.682689492;
+        final double samplingStandardDeviationOfProportion = Math.sqrt(theoreticalProportionWithinOneSigma*(1-theoreticalProportionWithinOneSigma) /  sampleSize);
 
         Assert.assertEquals(empiricalProportionWithinOneSigma, theoreticalProportionWithinOneSigma, 5*samplingStandardDeviationOfProportion);
     }
@@ -124,26 +149,28 @@ public class TheoreticalSensitivityTest {
     //Put it all together for deterministic quality and depths
     @Test
     public void testDeterministicQualityAndDepth() throws Exception {
-        double logOddsThreshold = 0.0;
-        double tolerance = 0.001;
-        int sampleSize = 1; //quality is deterministic, hence no sampling error
+        final double logOddsThreshold = 0.0;
+        final double tolerance = 0.001;
+        final int sampleSize = 1; //quality is deterministic, hence no sampling error
         for (int q = 5; q < 10; q++) {
             for (int n = 5; n < 10; n++) {
-                double minAltCount = 10*n*Math.log10(2)/q;  //alts required to call when log odds ratio threshold = 1
+                final double minAltCount = 10*n*Math.log10(2)/q;  //alts required to call when log odds ratio threshold = 1
                 double expectedResult = 0.0;
 
-                List<ArrayList<Double>> altCountProbabilities = TheoreticalSensitivity.hetAltDepthDistribution(n+1);
+                final List<ArrayList<Double>> altCountProbabilities = TheoreticalSensitivity.hetAltDepthDistribution(n+1);
                 for (int altCount = n; altCount > minAltCount; altCount--) {
                     expectedResult += altCountProbabilities.get(n).get(altCount);
                 }
 
                 //deterministic weights that always yield q are 0.0 for 0 through q - 1 and 1.0 for q
-                List<Double> qualityDistribution = new ArrayList<Double>(Collections.nCopies(q, 0.0));
-                qualityDistribution.add(1.0);
-                List<Double> depthDistribution = new ArrayList<Double>(Collections.nCopies(n, 0.0));
-                depthDistribution.add(1.0);
+                final long[] qualityDistribution = new long[q+1];
+                Arrays.fill(qualityDistribution, 0L);
+                qualityDistribution[qualityDistribution.length-1]=1L;
+                final long[] depthDistribution = new long[n+1];
+                Arrays.fill(depthDistribution, 0L);
+                depthDistribution[depthDistribution.length-1]=1L;
 
-                double result = TheoreticalSensitivity.hetSNPSensitivity(depthDistribution, qualityDistribution, sampleSize, logOddsThreshold);
+                final double result = TheoreticalSensitivity.hetSNPSensitivity(depthDistribution, qualityDistribution, sampleSize, logOddsThreshold);
                 Assert.assertEquals(result, expectedResult, tolerance);
             }
         }

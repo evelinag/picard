@@ -4,6 +4,7 @@ import htsjdk.samtools.AlignmentBlock;
 import htsjdk.samtools.SAMRecord;
 import htsjdk.samtools.SamReader;
 import htsjdk.samtools.SamReaderFactory;
+import htsjdk.samtools.cram.encoding.reader.DataReader;
 import htsjdk.samtools.filter.SamRecordFilter;
 import htsjdk.samtools.filter.SecondaryAlignmentFilter;
 import htsjdk.samtools.metrics.MetricBase;
@@ -24,6 +25,7 @@ import picard.util.MathUtil;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
@@ -120,6 +122,9 @@ public class CollectWgsMetrics extends CommandLineProgram {
         public double PCT_90X;
         /** The fraction of bases that attained at least 100X sequence coverage in post-filtering bases. */
         public double PCT_100X;
+
+        /** The theoretical HET SNP sensitivity */
+        public double HET_SNP_SENS;
     }
 
     public static void main(final String[] args) {
@@ -195,9 +200,9 @@ public class CollectWgsMetrics extends CommandLineProgram {
         }
 
         // Construct and write the outputs
-        final Histogram<Integer> histo = new Histogram<Integer>("coverage", "count");
+        final Histogram<Integer> depthHisto = new Histogram<Integer>("coverage", "count");
         for (int i = 0; i < HistogramArray.length; ++i) {
-            histo.increment(i, HistogramArray[i]);
+            depthHisto.increment(i, HistogramArray[i]);
         }
 
         // Construct and write the outputs
@@ -207,16 +212,16 @@ public class CollectWgsMetrics extends CommandLineProgram {
         }
 
         final WgsMetrics metrics = generateWgsMetrics();
-        metrics.GENOME_TERRITORY = (long) histo.getSumOfValues();
-        metrics.MEAN_COVERAGE = histo.getMean();
-        metrics.SD_COVERAGE = histo.getStandardDeviation();
-        metrics.MEDIAN_COVERAGE = histo.getMedian();
-        metrics.MAD_COVERAGE = histo.getMedianAbsoluteDeviation();
+        metrics.GENOME_TERRITORY = (long) depthHisto.getSumOfValues();
+        metrics.MEAN_COVERAGE = depthHisto.getMean();
+        metrics.SD_COVERAGE = depthHisto.getStandardDeviation();
+        metrics.MEDIAN_COVERAGE = depthHisto.getMedian();
+        metrics.MAD_COVERAGE = depthHisto.getMedianAbsoluteDeviation();
 
         final long basesExcludedByDupes = dupeFilter.getFilteredBases();
         final long basesExcludedByMapq = mapqFilter.getFilteredBases();
         final long basesExcludedByPairing = pairFilter.getFilteredBases();
-        final double total = histo.getSum();
+        final double total = depthHisto.getSum();
         final double totalWithExcludes = total + basesExcludedByDupes + basesExcludedByMapq + basesExcludedByPairing + basesExcludedByBaseq + basesExcludedByOverlap + basesExcludedByCapping;
         metrics.PCT_EXC_DUPE = basesExcludedByDupes / totalWithExcludes;
         metrics.PCT_EXC_MAPQ = basesExcludedByMapq / totalWithExcludes;
@@ -240,9 +245,16 @@ public class CollectWgsMetrics extends CommandLineProgram {
         metrics.PCT_90X = MathUtil.sum(HistogramArray, 90, HistogramArray.length) / (double) metrics.GENOME_TERRITORY;
         metrics.PCT_100X = MathUtil.sum(HistogramArray, 100, HistogramArray.length) / (double) metrics.GENOME_TERRITORY;
 
+        // Get Theoretical Het SNP Sensitivity
+        final int sampleSize = 10000;
+        final double logOddsThreshold = 3.0;
+        final double depthSum = depthHisto.getSum();
+        final double snpSens = TheoreticalSensitivity.hetSNPSensitivity(HistogramArray, baseQHistogramArray, sampleSize, logOddsThreshold);
+        metrics.HET_SNP_SENS = snpSens/depthSum;
+
         final MetricsFile<WgsMetrics, Integer> out = getMetricsFile();
         out.addMetric(metrics);
-        out.addHistogram(histo);
+        out.addHistogram(depthHisto);
         if (INCLUDE_BQ_HISTOGRAM) {
             out.addHistogram(baseQHisto);
         }
