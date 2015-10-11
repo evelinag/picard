@@ -24,8 +24,12 @@
 
 package picard.analysis;
 
+import htsjdk.samtools.util.Log;
+import htsjdk.samtools.util.ProgressLogger;
+import picard.PicardException;
 import picard.util.MathUtil;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.*;
 
@@ -40,12 +44,17 @@ public class TheoreticalSensitivity {
     @param logOddsThreshold is the log_10 of the likelihood ratio required to call a SNP,
     for example 5 if the variant likelihood must be 10^5 times greater
      */
+    private static final Log log = Log.getInstance(TheoreticalSensitivity.class);
+
     public static double hetSNPSensitivity(final long[] depthDistribution, final long[] qualityDistribution,
                                   final int sampleSize, final double logOddsThreshold) {
         final int N = depthDistribution.length;
+
+        log.info("Creating Roulette Wheel");
         final RouletteWheel qualitySampler = new RouletteWheel(qualityDistribution);
 
         //qualitySums[m] is a random sample of sums of m quality scores, for m = 0, 1, N - 1
+        log.info("Calculating quality sums from quality sampler");
         final List<ArrayList<Integer>> qualitySums = qualitySampler.sampleCumulativeSums(N, sampleSize);
 
         //if a quality sum of m qualities exceeds the quality sum threshold for n total reads, a SNP is called
@@ -55,6 +64,7 @@ public class TheoreticalSensitivity {
 
         //probabilityToExceedThreshold[m][n] is the probability that the sum of m quality score
         //exceeds the nth quality sum threshold
+        log.info("Calculating theoretical het sensitivity");
         final List<ArrayList<Double>> probabilityToExceedThreshold = proportionsAboveThresholds(qualitySums, qualitySumThresholds);
         final List<ArrayList<Double>> altDepthDistribution = hetAltDepthDistribution(N);
         double result = 0.0;
@@ -116,23 +126,30 @@ public class TheoreticalSensitivity {
     public static class RouletteWheel {
         final private List<Double> probabilities;
         final private int N;
+        private int count=0;
 
         RouletteWheel(final long[] weights) {
             N = weights.length;
 
             probabilities = new ArrayList<Double>();
-            //@TODO: check for 0
             final double wMax = (double)MathUtil.max(weights);
+            if(wMax==0){throw new PicardException("Quality score distribution is empty.");}
             for (final long w : weights) {
-                probabilities.add(w/wMax);
+                probabilities.add(w / wMax);
             }
         }
 
-        //@TODO: test that this cannot infinitely loop; get counter and cancel it if it goes past that
         public int draw() {
             while (true) {
                 final int n = (int) (N * Math.random());
-                if (Math.random() < probabilities.get(n)) return n;
+                count++;
+                if (Math.random() < probabilities.get(n)) {
+                    count = 0;
+                    return n;
+                }
+                else if(count<=600){
+                    return 0;
+                }
             }
         }
 
@@ -147,6 +164,7 @@ public class TheoreticalSensitivity {
                     result.get(m).add(cumulativeSum);
                     cumulativeSum += draw();
                 }
+                if(iteration%1000==0){log.info(iteration + " sampling iterations completed");}
             }
             return result;
         }
