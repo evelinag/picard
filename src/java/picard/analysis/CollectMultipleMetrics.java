@@ -250,7 +250,7 @@ public class CollectMultipleMetrics extends CommandLineProgram {
     public String OUTPUT;
 
     @Option(shortName="LEVEL", doc="The level(s) at which to accumulate metrics.")
-    public Set<MetricAccumulationLevel> METRIC_ACCUMULATION_LEVEL = Collections.emptySet();
+    public Set<MetricAccumulationLevel> METRIC_ACCUMULATION_LEVEL = new HashSet<MetricAccumulationLevel>();
 
     @Option(doc = "List of metrics programs to apply during the pass through the SAM file.")
     public List<Program> PROGRAM = CollectionUtil.makeList(Program.CollectAlignmentSummaryMetrics, Program.CollectBaseDistributionByCycle,
