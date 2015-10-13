@@ -2,6 +2,7 @@ package picard.analysis;
 
 import htsjdk.samtools.util.CollectionUtil;
 import picard.PicardException;
+import picard.analysis.artifacts.CollectSequencingArtifactMetrics;
 import picard.cmdline.CommandLineProgram;
 import picard.cmdline.CommandLineProgramProperties;
 import picard.cmdline.Option;
@@ -210,6 +211,25 @@ public class CollectMultipleMetrics extends CommandLineProgram {
                 program.INPUT = input;
                 program.REFERENCE_SEQUENCE = reference;
                 
+                return program;
+            }
+        },
+        CollectSequencingArtifactMetrics {
+            @Override
+            public boolean needsReferenceSequence() {
+                return true;
+            }
+            @Override
+            public boolean supportsMetricAccumulationLevel() { return false; }
+            @Override
+            public SinglePassSamProgram makeInstance(final String outbase, final File input, final File reference, final Set<MetricAccumulationLevel> metricAccumulationLevel) {
+                final CollectSequencingArtifactMetrics program = new CollectSequencingArtifactMetrics();
+                program.OUTPUT = new File(outbase);
+                // Generally programs should not be accessing these directly but it might make things smoother
+                // to just set them anyway. These are set here to make sure that in case of a the derived class
+                // overrides
+                program.INPUT = input;
+                program.REFERENCE_SEQUENCE = reference;
                 return program;
             }
         }
