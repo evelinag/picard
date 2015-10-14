@@ -175,4 +175,9 @@ public class TheoreticalSensitivityTest {
             }
         }
     }
+
+    @Test
+    public void testHetSensWGS() throws Exception {
+        
+    }
 }

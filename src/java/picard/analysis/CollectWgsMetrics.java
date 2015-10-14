@@ -181,7 +181,7 @@ public class CollectWgsMetrics extends CommandLineProgram {
             final HashSet<String> readNames = new HashSet<String>(info.getRecordAndPositions().size());
             int pileupSize = 0;
             for (final SamLocusIterator.RecordAndOffset recs : info.getRecordAndPositions()) {
-
+                //make sure to honor looking for overlap, don't continue, keep pileup max, tabulate all bins before continue statement
                 if (recs.getBaseQuality() < MINIMUM_BASE_QUALITY)                   { ++basesExcludedByBaseq;   continue; }
                 if (!readNames.add(recs.getRecord().getReadName()))                 { ++basesExcludedByOverlap; continue; }
                 pileupSize++;

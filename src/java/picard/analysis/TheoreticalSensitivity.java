@@ -147,7 +147,7 @@ public class TheoreticalSensitivity {
                     count = 0;
                     return n;
                 }
-                else if(count<=600){
+                else if(count>=600){
                     return 0;
                 }
             }
