@@ -34,17 +34,25 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Arrays;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.File;
+import java.util.Scanner;
 
 /**
  * Created by davidben on 5/18/15.
  */
 public class TheoreticalSensitivityTest {
 
+    private final static File TEST_DIR = new File("testdata/picard/analysis/TheoreticalSensitivity/");
+    private final File depth = new File(TEST_DIR, "Solexa332667_DepthDist.histo");
+    private final File baseQ = new File(TEST_DIR, "Solexa332667_BaseQ.histo");
+
     @Test
     public void testRouletteWheel() throws Exception {
 
         //test that a deterministic roulette wheel only gives one value
-        final long[] deterministicWeights = {0L, 1L, 0L};
+        final double[] deterministicWeights = {0.0, 1.0, 0.0};
         final TheoreticalSensitivity.RouletteWheel deterministicWheel = new TheoreticalSensitivity.RouletteWheel(deterministicWeights);
         for (int n = 0; n < 10; n++) Assert.assertEquals(deterministicWheel.draw(), 1);
 
@@ -112,7 +120,7 @@ public class TheoreticalSensitivityTest {
     @Test
     public void testCentralLimitTheorem() throws Exception {
         //use a RouletteWheel that gives 0, 1, 2 with equal probability
-        final long[] weights = {1L, 1L, 1L};
+        final double[] weights = {1.0, 1.0, 1.0};
         final TheoreticalSensitivity.RouletteWheel wheel = new TheoreticalSensitivity.RouletteWheel(weights);
 
         final int sampleSize = 1000;
@@ -163,10 +171,10 @@ public class TheoreticalSensitivityTest {
                 }
 
                 //deterministic weights that always yield q are 0.0 for 0 through q - 1 and 1.0 for q
-                final long[] qualityDistribution = new long[q+1];
+                final double[] qualityDistribution = new double[q+1];
                 Arrays.fill(qualityDistribution, 0L);
                 qualityDistribution[qualityDistribution.length-1]=1L;
-                final long[] depthDistribution = new long[n+1];
+                final double[] depthDistribution = new double[n+1];
                 Arrays.fill(depthDistribution, 0L);
                 depthDistribution[depthDistribution.length-1]=1L;
 
@@ -178,6 +186,30 @@ public class TheoreticalSensitivityTest {
 
     @Test
     public void testHetSensWGS() throws Exception {
-        
+        //Expect theoretical sens to be close to .9306 for Solexa-332667
+        final double tolerance = 0.001;
+        final double expectedResult = .9306;
+        final int max = 250;
+        final double [] depthDistribution = new double[max+1];
+        final double [] qualityDistribution = new double[25];
+
+        final Scanner scanDepth = new Scanner(depth);
+        int i = 0;
+        while (scanDepth.hasNextDouble()) {
+            depthDistribution[i] = scanDepth.nextDouble();
+            i++;
+        }
+        final Scanner scanBaseQ = new Scanner(baseQ);
+        int j = 0;
+        while (scanBaseQ.hasNextDouble()) {
+            qualityDistribution[j] = scanBaseQ.nextDouble();
+            j++;
+        }
+
+        final int sampleSize = 10000;
+        final double logOddsThreshold = 3.0;
+
+        final double result = TheoreticalSensitivity.hetSNPSensitivity(depthDistribution, qualityDistribution, sampleSize, logOddsThreshold);
+        Assert.assertEquals(result, expectedResult, tolerance);
     }
 }

@@ -181,7 +181,7 @@ public class CollectWgsMetrics extends CommandLineProgram {
             final HashSet<String> readNames = new HashSet<String>(info.getRecordAndPositions().size());
             int pileupSize = 0;
             for (final SamLocusIterator.RecordAndOffset recs : info.getRecordAndPositions()) {
-                //make sure to honor looking for overlap, don't continue, keep pileup max, tabulate all bins before continue statement
+                //TODO make sure to honor looking for overlap, don't continue, keep pileup max, tabulate all bins before continue statement
                 if (recs.getBaseQuality() < MINIMUM_BASE_QUALITY)                   { ++basesExcludedByBaseq;   continue; }
                 if (!readNames.add(recs.getRecord().getReadName()))                 { ++basesExcludedByOverlap; continue; }
                 pileupSize++;
@@ -249,8 +249,18 @@ public class CollectWgsMetrics extends CommandLineProgram {
         final int sampleSize = 10000;
         final double logOddsThreshold = 3.0;
         final double depthSum = depthHisto.getSum();
-        final double snpSens = TheoreticalSensitivity.hetSNPSensitivity(HistogramArray, baseQHistogramArray, sampleSize, logOddsThreshold);
-        metrics.HET_SNP_SENS = snpSens/depthSum;
+        final double baseSum = baseQHisto.getSum();
+        final double [] depthDoubleArray = new double[max+1];
+        final double [] baseQDoubleArray = new double[max+1];
+        for(int i = 0; i < HistogramArray.length; i++)
+        {
+            depthDoubleArray[i] = HistogramArray[i]/depthSum;
+        }
+        for(int i = 0; i < baseQHistogramArray.length; i++)
+        {
+            baseQDoubleArray[i] = baseQHistogramArray[i]/baseSum;
+        }
+        metrics.HET_SNP_SENS = TheoreticalSensitivity.hetSNPSensitivity(depthDoubleArray, baseQDoubleArray, sampleSize, logOddsThreshold);
 
         final MetricsFile<WgsMetrics, Integer> out = getMetricsFile();
         out.addMetric(metrics);

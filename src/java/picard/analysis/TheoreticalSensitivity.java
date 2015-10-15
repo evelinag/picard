@@ -46,7 +46,7 @@ public class TheoreticalSensitivity {
      */
     private static final Log log = Log.getInstance(TheoreticalSensitivity.class);
 
-    public static double hetSNPSensitivity(final long[] depthDistribution, final long[] qualityDistribution,
+    public static double hetSNPSensitivity(final double[] depthDistribution, final double[] qualityDistribution,
                                   final int sampleSize, final double logOddsThreshold) {
         final int N = depthDistribution.length;
 
@@ -128,13 +128,15 @@ public class TheoreticalSensitivity {
         final private int N;
         private int count=0;
 
-        RouletteWheel(final long[] weights) {
+        RouletteWheel(final double[] weights) {
             N = weights.length;
 
             probabilities = new ArrayList<Double>();
-            final double wMax = (double)MathUtil.max(weights);
+            final double wMax = MathUtil.max(weights);
+
             if(wMax==0){throw new PicardException("Quality score distribution is empty.");}
-            for (final long w : weights) {
+
+            for (final double w : weights) {
                 probabilities.add(w / wMax);
             }
         }
@@ -148,6 +150,7 @@ public class TheoreticalSensitivity {
                     return n;
                 }
                 else if(count>=600){
+                    count = 0;
                     return 0;
                 }
             }
